@@ -3,12 +3,14 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 import { Bell, Home, ShoppingCart } from "lucide-react";
 import ShoppingCartIcon from "./ShoppingCartIcon";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import ProfileButton from "./ProfileButton";
 
 const Navbar = () => {
   return (
     <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-4">
         {/* LEFT */}
-        <Link href="/" className="flex items-center flex-shrink-0">
+        <Link href="/" className="flex items-center shrink-0">
           {/* Logo untuk mobile & tablet */}
           <Image 
             src="/logo-dkm.png" 
@@ -35,7 +37,14 @@ const Navbar = () => {
               </Link>
               <Bell className="w-5 h-5 text-gray-600"/>
               <ShoppingCartIcon/>
-              <Link href="/login" className="text-sm whitespace-nowrap">Sign in</Link>
+              {/* Show the sign-in and sign-up buttons when the user is signed out */}
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              {/* Show the user button when the user is signed in */}
+              <SignedIn>
+                <ProfileButton />
+              </SignedIn>
             </div>
         </div>
     </nav>
