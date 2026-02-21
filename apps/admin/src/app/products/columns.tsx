@@ -10,7 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
@@ -22,9 +21,7 @@ export type Product = {
   name: string;
   shortDescription: string;
   description: string;
-  sizes: string[];
-  colors: string[];
-  images: Record<string, string>;
+  image: string;
 };
 
 export const columns: ColumnDef<Product>[] = [
@@ -53,12 +50,14 @@ export const columns: ColumnDef<Product>[] = [
       const product = row.original;
       return (
         <div className="w-9 h-9 relative">
-          <Image
-            src={product.images?.[product.colors[0] || ""] || ""}
-            alt={product.name}
-            fill
-            className="rounded-full object-cover"
-          />
+          {product.image && (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="rounded-full object-cover"
+            />
+          )}
         </div>
       );
     },
@@ -107,7 +106,7 @@ export const columns: ColumnDef<Product>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href={`/products/${product.id}`}>View customer</Link>
+              <Link href={`/products/${product.id}`}>View product</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

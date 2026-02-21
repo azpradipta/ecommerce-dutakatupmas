@@ -42,6 +42,13 @@ const formSchema = z.object({
 const AddUser = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+       defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+    },
   });
   return (
     <SheetContent>
