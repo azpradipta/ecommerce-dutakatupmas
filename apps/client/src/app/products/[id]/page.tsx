@@ -1,5 +1,5 @@
 import ProductInteraction from "@/components/ProductInteraction";
-import { ProductType, ProductsType } from "@/types";
+import { ProductType, ProductsType } from "@repo/types";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -13,7 +13,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 39.9,
-    image: "/products/1g.png",
+    images: "/products/1g.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 2,
@@ -23,7 +26,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
-    image: "/products/2g.png",
+    images: "/products/2g.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 3,
@@ -33,7 +39,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 69.9,
-    image: "/products/3gr.png",
+    images: "/products/3gr.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),  
   },
   {
     id: 4,
@@ -43,7 +52,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 29.9,
-    image: "/products/4w.png",
+    images: "/products/4w.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 5,
@@ -53,7 +65,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 49.9,
-    image: "/products/5r.png",
+    images: "/products/5r.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 6,
@@ -63,7 +78,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
-    image: "/products/6g.png",
+    images: "/products/6g.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 7,
@@ -73,7 +91,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 69.9,
-    image: "/products/7g.png",
+    images: "/products/7g.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),  
   },
   {
     id: 8,
@@ -83,7 +104,10 @@ const products: ProductsType = [
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
-    image: "/products/8b.png",
+    images: "/products/8b.png",
+    categorySlug: "test",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 
@@ -115,9 +139,9 @@ const ProductPage = async ({
     <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12">
       {/* IMAGE */}
       <div className="w-full lg:w-5/12 relative aspect-2/3">
-        {product.image && (
+        {product.images && (
           <Image
-            src={product.image}
+            src={product.images as string}
             alt={product.name}
             fill
             className="object-contain rounded-md"
