@@ -15,7 +15,7 @@ app.get("/health", (c) => {
   });
 });
 
-app.route("/sessions", sessionRoute)
+app.route("/session", sessionRoute)
 
 // app.post("/create-stripe-product", async (c) => {
   
