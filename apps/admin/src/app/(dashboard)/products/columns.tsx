@@ -10,21 +10,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ProductType } from "@repo/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export type Product = {
-  id: string | number;
-  price: number;
-  name: string;
-  shortDescription: string;
-  description: string;
-  image: string;
-};
-
-export const columns: ColumnDef<Product>[] = [
+export const columns: ColumnDef<ProductType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -44,20 +36,22 @@ export const columns: ColumnDef<Product>[] = [
     ),
   },
   {
-    accessorKey: "image",
+    accessorKey: "images",
     header: "Image",
     cell: ({ row }) => {
       const product = row.original;
+      const imageSrc = typeof product.images === "string" 
+        ? product.images 
+        : "/placeholder.png";
+
       return (
         <div className="w-9 h-9 relative">
-          {product.image && (
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="rounded-full object-cover"
-            />
-          )}
+          <Image
+            src={imageSrc}
+            alt={product.name}
+            fill
+            className="rounded-full object-cover border"
+          />
         </div>
       );
     },
@@ -78,6 +72,13 @@ export const columns: ColumnDef<Product>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      const price = parseFloat(row.getValue("price"));
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(price);
     },
   },
   {
@@ -100,7 +101,9 @@ export const columns: ColumnDef<Product>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(product.id.toString())}
+              onClick={() =>
+                navigator.clipboard.writeText(product.id.toString())
+              }
             >
               Copy product ID
             </DropdownMenuItem>
