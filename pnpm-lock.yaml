@@ -20,6 +20,9 @@ importers:
 
   apps/admin:
     dependencies:
+      '@clerk/nextjs':
+        specifier: ^6.37.3
+        version: 6.37.3(next@16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.2.2(react-hook-form@7.71.1(react@19.2.3))
@@ -114,6 +117,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -426,10 +432,6 @@ packages:
   '@chevrotain/utils@10.5.0':
     resolution: {integrity: sha512-hBzuU5+JjB2cqNZyszkDHZgOSrUUT8V3dhgRl8Q9Gp6dAj/H5+KILGjbhDpc3Iy9qmqlm/akuOI2ut9VUtzJxQ==}
 
-  '@clerk/backend@2.30.1':
-    resolution: {integrity: sha512-GoxnJzVH0ycNPAGCDMfo3lPBFbo5nehpLSVFjgGEnzIRGGahBtAB8PQT7KM2zo58pD8apjb/+suhcB/WCiEasQ==}
-    engines: {node: '>=18.17.0'}
-
   '@clerk/backend@2.31.1':
     resolution: {integrity: sha512-NW/thmJpVN/N/YH5+z+lTh3ECNYd/COlnCIC+CLSxv59uqYRiSzXzAsVrkYF9PbXwkkIC+aAi43d8fnqqIKPUw==}
     engines: {node: '>=18.17.0'}
@@ -500,10 +502,6 @@ packages:
         optional: true
       react-dom:
         optional: true
-
-  '@clerk/types@4.101.14':
-    resolution: {integrity: sha512-jl7DywmeaZx1IntgEXcjDZq2uyk+X/1yAZOjxOboeGTS0rNTiQNhv7xK8tFVjexsUAFrYlwC1AxhFuJiMDQjow==}
-    engines: {node: '>=18.17.0'}
 
   '@clerk/types@4.101.16':
     resolution: {integrity: sha512-LECMfBP79+1gEqQy30fOeWxhcD7/c4nzz6IJ66r3ejRokwKaKsMCBRXP/Rgf39UpPajUb8oYzQ0CIhz1dc3Ehw==}
@@ -3887,16 +3885,6 @@ snapshots:
 
   '@chevrotain/utils@10.5.0': {}
 
-  '@clerk/backend@2.30.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
-    dependencies:
-      '@clerk/shared': 3.44.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@clerk/types': 4.101.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      standardwebhooks: 1.0.0
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - react
-      - react-dom
-
   '@clerk/backend@2.31.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@clerk/shared': 3.45.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3949,10 +3937,10 @@ snapshots:
 
   '@clerk/nextjs@6.37.3(next@16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
-      '@clerk/backend': 2.30.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@clerk/backend': 2.31.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@clerk/clerk-react': 5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@clerk/shared': 3.44.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@clerk/types': 4.101.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@clerk/shared': 3.46.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@clerk/types': 4.101.17(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next: 16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -3994,13 +3982,6 @@ snapshots:
     optionalDependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
-
-  '@clerk/types@4.101.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
-    dependencies:
-      '@clerk/shared': 3.44.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-    transitivePeerDependencies:
-      - react
-      - react-dom
 
   '@clerk/types@4.101.16(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
