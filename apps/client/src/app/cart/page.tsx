@@ -86,7 +86,7 @@ const CartPage = () => {
                         Quantity: {item.quantity}
                       </p>
                     </div>
-                    <p className="font-medium">${item.price.toFixed(2)}</p>
+                    <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
                   </div>
                 </div>
                 {/* DELETE BUTTON */}
