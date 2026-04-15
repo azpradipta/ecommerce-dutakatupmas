@@ -122,34 +122,30 @@ const AppSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href="#">
-                          <Plus />
-                          Add Product
-                        </Link>
-                      </SidebarMenuButton>
-                    </SheetTrigger>
-                    <AddProduct />
-                  </Sheet>
-                </SidebarMenuButton>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <SidebarMenuButton asChild>
+                      <button type="button">
+                        <Plus />
+                        Add Product
+                      </button>
+                    </SidebarMenuButton>
+                  </SheetTrigger>
+                  <AddProduct />
+                </Sheet>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href="#">
-                          <Plus />
-                          Add Category
-                        </Link>
-                      </SidebarMenuButton>
-                    </SheetTrigger>
-                    <AddCategory />
-                  </Sheet>
-                </SidebarMenuButton>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <SidebarMenuButton asChild>
+                      <button type="button">
+                        <Plus />
+                        Add Category
+                      </button>
+                    </SidebarMenuButton>
+                  </SheetTrigger>
+                  <AddCategory />
+                </Sheet>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
@@ -170,19 +166,17 @@ const AppSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href="#">
-                          <Plus />
-                          Add User
-                        </Link>
-                      </SidebarMenuButton>
-                    </SheetTrigger>
-                    <AddUser />
-                  </Sheet>
-                </SidebarMenuButton>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <SidebarMenuButton asChild>
+                      <button type="button">
+                        <Plus />
+                        Add User
+                      </button>
+                    </SidebarMenuButton>
+                  </SheetTrigger>
+                  <AddUser />
+                </Sheet>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
@@ -203,19 +197,17 @@ const AppSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href="#">
-                          <Plus />
-                          Add Order
-                        </Link>
-                      </SidebarMenuButton>
-                    </SheetTrigger>
-                    <AddOrder />
-                  </Sheet>
-                </SidebarMenuButton>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <SidebarMenuButton asChild>
+                      <button type="button">
+                        <Plus />
+                        Add Order
+                      </button>
+                    </SidebarMenuButton>
+                  </SheetTrigger>
+                  <AddOrder />
+                </Sheet>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

@@ -21,6 +21,11 @@ import {
 import { DataTablePagination } from "@/components/TablePagination";
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
+import { useAuth } from "@clerk/nextjs";
+import { useMutation } from "@tanstack/react-query";
+import { ProductType } from "@repo/types";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -33,6 +38,8 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState({});
+  const { getToken } = useAuth();
+  const router = useRouter();
 
   const table = useReactTable({
     data,
@@ -48,13 +55,51 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const token = await getToken();
+      const selectedRows = table.getSelectedRowModel().rows;
+
+      await Promise.all(
+        selectedRows.map(async (row) => {
+          const productId = (row.original as ProductType).id;
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_PRODUCT_SERVICE_URL}/products/${productId}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (!res.ok) {
+            throw new Error(`Failed to delete product ${productId}`);
+          }
+        })
+      );
+    },
+    onSuccess: () => {
+      toast.success("Product(s) deleted successfully");
+      router.refresh();
+      setRowSelection({});
+    },
+    onError: (error: Error) => {
+      toast.error(error.message);
+    },
+  });
+
   return (
     <div className="rounded-md border">
       {Object.keys(rowSelection).length > 0 && (
         <div className="flex justify-end">
-          <button className="flex items-center gap-2 bg-red-500 text-white px-2 py-1 text-sm rounded-md m-4 cursor-pointer">
-            <Trash2 className="w-4 h-4"/>
-            Delete Product(s)
+          <button
+            className="flex items-center gap-2 bg-red-500 text-white px-2 py-1 text-sm rounded-md m-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={() => mutation.mutate()}
+            disabled={mutation.isPending}
+          >
+            <Trash2 className="w-4 h-4" />
+            {mutation.isPending ? "Deleting" : "Delete Product(s)"}
           </button>
         </div>
       )}
